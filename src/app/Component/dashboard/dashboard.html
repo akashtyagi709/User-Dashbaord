@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row mx-0">
+            <div class="col-12 text-center my-3">
+                <h5>User Data</h5>
+            </div>
+        </div>
+        <div class="row mx-0 text-center mt-3">
+            <div class="col-8  my-2">
+                <div class="col-12 text-end">
+                    <button class="btn btn-primary mx-2" (click)="addUser()">
+                        Add User
+                    </button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        @if (Data.length==0) {
+                        <tr>
+                            <td colspan="4" class="text-center">No Data Found</td>
+                        </tr> 
+                        }
+                        @for (item of Data; track $index) {
+                        <tr>
+                            <th>{{$index+1}}</th>
+                            <td>{{item?.name}}</td>
+                            <td>{{item?.email}}</td>
+                            <td>{{item?.role}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                @if (!showAddUserModal) {
+                <app-pie-chart></app-pie-chart>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@if (showAddUserModal) {
+<div class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-btn btn btn-sm text-light" (click)="closeModal()">X</button>
+        <app-add-user (submitted)="closeModal()"></app-add-user>
+    </div>
+</div>
+}

@@ -1,0 +1,7 @@
+button{
+    background-color: #1c4980 !important;
+    color: white;
+}
+input,select{
+   size: 48px !important;
+}
